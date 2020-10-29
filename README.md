@@ -1,3 +1,48 @@
+MAIN.CPP: 
+
+#include <iostream>
+#include "Header.h"
+
+
+int main() {
+
+    bool game_on = true;
+    int turn = 0;
+    std::string grid = reset();
+
+    introduction();
+
+    while (game_on) {       
+        turn += 1;
+        grid = playerInput(turn, grid);
+        drawstatus(grid);
+
+        if (chkWinner(grid)) { game_on = false; };
+    }
+
+    finish_game(turn);
+    newRound(grid);
+}
+
+
+
+HEADER: 
+
+
+#include <iostream>
+
+std::string reset();
+void introduction();
+std::string playerInput(int turn, std::string grid);
+void drawstatus(std::string grid);
+bool chkWinner(std::string grid);
+void finish_game(int turn);
+void newRound(std::string grid);
+
+
+
+
+THIS ARE FUNCTIONS:
 
 #include <iostream>
 #include "Header.h"
